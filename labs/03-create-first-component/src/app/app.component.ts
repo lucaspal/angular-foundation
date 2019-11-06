@@ -1,4 +1,4 @@
-import { MOCK_PLAYGROUNDS } from './shared/mock-playgrounds';
+import { PlaygroundService } from './shared/playground.service';
 import { Playground } from './shared/playground';
 import { Component } from '@angular/core';
 
@@ -13,11 +13,11 @@ export class AppComponent {
   public playgrounds: Playground[];
   public selected: Playground;
 
-  constructor() {  
+  constructor(public playgroundService: PlaygroundService) {  
   }
 
   public ngOnInit() {
-    this.playgrounds = MOCK_PLAYGROUNDS;
+    this.playgrounds = this.playgroundService.getPlaygrounds();
   }
 
   public updateSelectedPlayground(p: Playground): void {
