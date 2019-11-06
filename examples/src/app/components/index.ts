@@ -1,0 +1,9 @@
+export { HelloComponent } from './hello';
+export { NgifComponent } from './ngif';
+export { InnerComponent } from './inner';
+export { InterpolationComponent } from './interpolation';
+export { PropertyComponent } from './property';
+export { EventComponent } from './event';
+export { TwowayComponent } from './twoway';
+export { OuterComponent } from './outer';
+export { NgforComponent } from './ngfor';
