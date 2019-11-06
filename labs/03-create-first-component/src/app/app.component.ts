@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'app works!';
+  title = 'It totally works!';
   public playgrounds: Playground[];
   public selected: Playground;
 
@@ -26,5 +26,14 @@ export class AppComponent {
 
   public getSelectedName(): string | null {
     return this.selected ? this.selected.name : null;
+  }
+
+  public getMapsLink(): string | null {
+    if (this.selected === undefined) {
+      return null;
+    }
+    const lat = this.selected.position.lat;
+    const lng = this.selected.position.lng;
+    return `https://www.google.com/maps/search/?api=1&query=${lat},${lng}`
   }
 }
