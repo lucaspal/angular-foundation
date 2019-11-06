@@ -12,12 +12,15 @@ export class SidebarComponent implements OnInit {
   @Input() public playgrounds: Playground[];
   @Output() public selectedPlayground = new EventEmitter<Playground>();
 
+  public selected: Playground;
+
   constructor() { }
 
   ngOnInit() {
   }
 
   public selectPlayground(p: Playground): void {
+    this.selected = p;
     this.selectedPlayground.emit(p)
   }
 }
