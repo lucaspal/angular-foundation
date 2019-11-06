@@ -18,7 +18,7 @@ export class FooterComponent implements OnInit {
   ngOnInit() {
   }
 
-  public getMapsLink(): string | null {
-    return `https://www.google.com/maps/search/?api=1&query=${this.position.lat},${this.position.lng}`
+  public getMapsLink(): string {
+    return `https://www.google.com/maps/search/?api=1&query=${this.position.lat},${this.position.lng}`;
   }
 }

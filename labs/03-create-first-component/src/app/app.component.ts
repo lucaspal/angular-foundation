@@ -24,16 +24,7 @@ export class AppComponent {
     this.selected = p;
   }
 
-  public getSelectedName(): string | null {
+  public getSelectedName(): string {
     return this.selected ? this.selected.name : null;
-  }
-
-  public getMapsLink(): string | null {
-    if (this.selected === undefined) {
-      return null;
-    }
-    const lat = this.selected.position.lat;
-    const lng = this.selected.position.lng;
-    return `https://www.google.com/maps/search/?api=1&query=${lat},${lng}`
   }
 }
