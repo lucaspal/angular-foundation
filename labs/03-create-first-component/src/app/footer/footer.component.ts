@@ -1,4 +1,3 @@
-import { Playground } from './../shared/playground';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
@@ -8,7 +7,9 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  @Input() public value: Playground;
+  @Input() public name: string;
+  @Input() public field1?: string;
+  @Input() public field2?: string;
 
   constructor() { }
 

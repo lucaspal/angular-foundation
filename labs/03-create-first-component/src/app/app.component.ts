@@ -23,4 +23,8 @@ export class AppComponent {
   public updateSelectedPlayground(p: Playground): void {
     this.selected = p;
   }
+
+  public getSelectedName(): string | null {
+    return this.selected ? this.selected.name : null;
+  }
 }
