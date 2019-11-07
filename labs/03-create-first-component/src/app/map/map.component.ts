@@ -6,6 +6,7 @@ import { LocationService } from '../shared/location.service';
 import { map } from 'rxjs/operators';
 import { Coordinate } from '../shared/coordinate';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 
 
@@ -16,13 +17,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MapComponent implements OnInit {
   public playgrounds: Playground[];
-  public selected: Playground;
+  public selectedPlayground: Playground;
   public markersObservable: Observable<Marker>;
   public center: Center = new Center(56.360029, 10.746635); // Center of Denmark
 
   constructor(
     public playgroundService: PlaygroundService,
-    public locationService: LocationService
+    public locationService: LocationService,
+    public router: Router,
   ) {
   }
 
@@ -36,10 +38,11 @@ export class MapComponent implements OnInit {
   }
 
   public updateSelectedPlayground(p: Playground): void {
-    this.selected = p;
+    this.selectedPlayground = p;
+    this.router.navigate(['', this.selectedPlayground.id]);
   }
 
   public getSelectedName(): string {
-    return this.selected ? this.selected.name : null;
+    return this.selectedPlayground ? this.selectedPlayground.name : null;
   }
 }

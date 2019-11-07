@@ -10,17 +10,15 @@ import { EventEmitter } from '@angular/core';
 export class SidebarComponent implements OnInit {
 
   @Input() public playgrounds: Playground[];
-  @Output() public selectedPlayground = new EventEmitter<Playground>();
-
-  public selected: Playground;
+  @Output() public onPlaygroundSelected = new EventEmitter<Playground>();
+  @Input() public selectedPlayground: Playground;
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  public selectPlayground(p: Playground): void {
-    this.selected = p;
-    this.selectedPlayground.emit(p)
+  public playgroundClicked(p: Playground): void {
+    this.onPlaygroundSelected.emit(p)
   }
 }
