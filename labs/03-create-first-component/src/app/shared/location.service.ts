@@ -5,7 +5,9 @@ import { Observable } from 'rxjs';
 import { Coordinate } from './coordinate';
 import { map, publishReplay, refCount } from 'rxjs/operators';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class LocationService {
 
   private location$: Observable<Coordinate>;
