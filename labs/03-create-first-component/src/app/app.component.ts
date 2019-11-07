@@ -15,11 +15,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'It totally works!';
   public playgrounds: Playground[];
   public selected: Playground;
   public markersObservable: Observable<Marker>;
-  public center: Center = new Center(56.360029, 10.746635);
+  public center: Center = new Center(56.360029, 10.746635); // Center of Denmark
 
   constructor(
     public playgroundService: PlaygroundService,
@@ -31,6 +30,7 @@ export class AppComponent {
     this.playgroundService.getPlaygrounds().subscribe((playgrounds: Playground[]) => {
       this.playgrounds = playgrounds;
     });
+
     this.markersObservable = this.locationService.current.pipe(
       map((location: Coordinate) => new Marker('myLocation', location.lat, location.lng)))
   }
