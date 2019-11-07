@@ -1,0 +1,4 @@
+<leaflet [center]="center" [markers]="markersObservable"></leaflet>
+<app-sidebar [playgrounds]="playgrounds" (selectedPlayground)="updateSelectedPlayground($event)"></app-sidebar>
+<app-footer *ngIf="selected != undefined" [name]="selected.name" [field1]="selected.addressDescription"
+  [field2]="selected.description" [position]="selected.position"></app-footer>
