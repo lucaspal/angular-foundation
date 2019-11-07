@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { PlaygroundService } from './shared/playground.service';
 import { Playground } from './shared/playground';
 import { Component } from '@angular/core';
@@ -13,11 +14,13 @@ export class AppComponent {
   public playgrounds: Playground[];
   public selected: Playground;
 
-  constructor(public playgroundService: PlaygroundService) {  
+  constructor(public playgroundService: PlaygroundService) {
   }
 
   public ngOnInit() {
-    this.playgrounds = this.playgroundService.getPlaygrounds();
+    this.playgroundService.getPlaygrounds().subscribe((playgrounds: Playground[]) => {
+      this.playgrounds = playgrounds;
+    });
   }
 
   public updateSelectedPlayground(p: Playground): void {

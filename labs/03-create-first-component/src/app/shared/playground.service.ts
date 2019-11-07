@@ -1,4 +1,6 @@
-import { MOCK_PLAYGROUNDS } from './mock-playgrounds';
+import { Observable, of } from 'rxjs';
+import {catchError, publishLast, refCount} from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
 import { Playground } from './playground';
 import { Injectable } from '@angular/core';
 
@@ -7,9 +9,20 @@ import { Injectable } from '@angular/core';
 })
 export class PlaygroundService {
 
-  constructor() { }
+  private request$: Observable<Playground[]>
 
-  public getPlaygrounds(): Playground[] {
-    return MOCK_PLAYGROUNDS;
+  constructor(public httpClient: HttpClient) { 
+    this.request$ = httpClient.get<Playground[]>('assets/copenhagen.json').pipe(
+      catchError((error: Response) => {
+        console.error('Unable to fetch playgrounds', error.statusText);
+        return of([]);
+      }),
+      publishLast(),
+      refCount()
+    );
+  }
+
+  public getPlaygrounds(): Observable<Playground[]> {
+    return this.request$;
   }
 }
